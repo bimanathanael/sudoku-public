@@ -25,6 +25,7 @@ export const Home = ({navigation}) => {
         difficulty: selectedValue
       })
       setUsername("")
+      setSelectedValue("easy")
     }
   }
 
@@ -39,6 +40,7 @@ export const Home = ({navigation}) => {
         <Picker
           style={styles.picker}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+          selectedValue={selectedValue}
         >
           <Picker.Item label="Easy" value="easy" />
           <Picker.Item label="Medium" value="medium" />

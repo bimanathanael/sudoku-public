@@ -2,7 +2,8 @@
 const initialState = {
   sudokuBoard: [],
   difficulty: "easy",
-  result: null
+  result: null,
+  solution: []
 }
 
 export const sudokuReducers = ( state = initialState, action) => {
@@ -19,14 +20,16 @@ export const sudokuReducers = ( state = initialState, action) => {
         result: action.payload.result
       }
     case 'SET_VALID_BOARD':
+      console.log(action.payload.result, 'reducers solution')
       return {
         ...state,
-        sudokuBoard: action.payload.result
+        solution: action.payload.result
       }
     case 'RESET':
         return {
           ...state,
-          result: null
+          result: null,
+          solution: []
         }
     default:
       return state

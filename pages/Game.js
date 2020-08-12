@@ -10,7 +10,7 @@ import { reset } from '../store/actions/sudokuActions'
 
 export const Game = ({route: {params}}) => {
   const dispatch = useDispatch()
-  const {sudokuBoard, difficulty} = useSelector(state => state.sudokuReducers)
+  const {sudokuBoard, difficulty, solution} = useSelector(state => state.sudokuReducers)
   const [getBoard, setBoard] = useState([])
   const [getDifficulty, setDifficulty] = useState("")
   const [isDone, setIsDone] = useState(false)

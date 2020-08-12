@@ -11,13 +11,20 @@ export const Board = ({doGiveUp}) =>{
   // const [getBoardOrigin, setBoardOrigin] = useState([])
   const [getResult, setResult] = useState("")
   const { result} = useSelector(state => state.sudokuReducers)
-  const {sudokuBoard} = useSelector(state => state.sudokuReducers)
+  const {sudokuBoard, solution} = useSelector(state => state.sudokuReducers)
   
   
   useEffect( () => {
     setBoard(JSON.parse(JSON.stringify(sudokuBoard)))
     // setBoardOrigin(sudokuBoard)
   },[sudokuBoard])
+
+  useEffect( () => {
+    if(solution.length > 0 ){
+      console.log('masuk use effect set board with solution')
+      setBoard(JSON.parse(JSON.stringify(solution)))
+    }
+  },[solution])
   
   const handleOnChange = (e,row, col) => {
     // const {value} = e.target
@@ -31,7 +38,7 @@ export const Board = ({doGiveUp}) =>{
         if (result.status == "solved"){
           navigation.navigate("Finish")
         }
-        else{
+        else if (result.status == "unsolved"){
           // alert("not solved")
           Alert.alert(
             "Status Sudoku",
