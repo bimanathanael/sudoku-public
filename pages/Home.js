@@ -1,5 +1,5 @@
 import React , { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Picker, TextInput, Dimensions, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Picker, TextInput, Dimensions, Button, Image, Alert } from 'react-native';
 import logo from '../assets/sudoku.png'
 
 export const Home = ({navigation}) => {
@@ -11,7 +11,14 @@ export const Home = ({navigation}) => {
 
   const navigatePage = () => {
     if(username == ""){
-      return alert("Please fill name..")
+      // return alert("Please fill name..")
+      return Alert.alert(
+        "Caution",
+        "Please fill name..",
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ],
+        { cancelable: false })
     } else {
       navigation.navigate("Game", {
         name: username,

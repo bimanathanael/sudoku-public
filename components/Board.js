@@ -1,7 +1,7 @@
 import { Provider, useDispatch, useSelector } from 'react-redux'
 import { giveUp, validate} from '../store/actions/sudokuActions'
 import React , { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, TextInput, Dimensions, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, Dimensions, Button, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export const Board = ({doGiveUp}) =>{
@@ -32,7 +32,14 @@ export const Board = ({doGiveUp}) =>{
           navigation.navigate("Finish")
         }
         else{
-          alert("not solved")
+          // alert("not solved")
+          Alert.alert(
+            "Status Sudoku",
+            "not solved",
+            [
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ],
+            { cancelable: false })
         }
     }
   },[result])
